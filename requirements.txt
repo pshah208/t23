@@ -8,4 +8,5 @@ tiktoken
 chroma
 streamlit_chat
 langchain yt-dlp pydub
-WhisperParser
+YoutubeAudioLoader
+OpenAIWhisperParser
