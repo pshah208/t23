@@ -28,11 +28,12 @@ load_dotenv(find_dotenv())
 embeddings= OpenAIEmbeddings(openai_api_key=openai_api_key)
 #User input video
 video_url= st.text_input('Please enter your Youtube link here!')
-
+save_dir = "~/t23/YouTube/"
 #creating a database
 def creating_db(video_url):
+    
     parser = OpenAIWhisperParser()
-    loader= YoutubeAudioLoader(video_url)
+    loader= YoutubeAudioLoader(video_url, save_dir)
     transcript= parser.parse(loader.load())
 
     #to breakdown the enormous amount of tokens we will get from the transcript as we have a limited set we can input
