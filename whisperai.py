@@ -9,6 +9,9 @@ from langchain.chains import ConversationalRetrievalChain
 from langchain.memory import ConversationBufferMemory
 from dotenv import find_dotenv, load_dotenv
 from langchain.memory.chat_message_histories import StreamlitChatMessageHistory
+from langchain.document_loaders.generic import GenericLoader
+from langchain.document_loaders.parsers import OpenAIWhisperParser, OpenAIWhisperParserLocal
+from langchain.document_loaders.blob_loaders.youtube_audio import YoutubeAudioLoader
 import textwrap
 import streamlit as st
 from streamlit_chat import message
