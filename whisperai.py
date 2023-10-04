@@ -32,7 +32,7 @@ video_url= st.text_input('Please enter your Youtube link here!')
 #creating a database
 def creating_db(video_url):
     parser = OpenAIWhisperParser()
-    loader= YoutubeAudioLoader([video_url], language = {"es", "en", "fr"})
+    loader= YoutubeAudioLoader(video_url)
     transcript= parser.parse(loader.load())
 
     #to breakdown the enormous amount of tokens we will get from the transcript as we have a limited set we can input
