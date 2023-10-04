@@ -1,0 +1,9 @@
+openai
+langchain
+python-dotenv
+streamlit
+faiss-cpu
+youtube-transcript-api
+tiktoken
+chroma
+streamlit_chat
