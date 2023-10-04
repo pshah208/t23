@@ -54,7 +54,7 @@ memory = ConversationBufferMemory(memory_key="chat_history", chat_memory=msgs, r
 chain= ConversationalRetrievalChain.from_llm(llm, verbose=False, retriever=retriever, chain_type="stuff", memory=memory) 
 
 #setting up the title
-st.title("Hello, I'm `Drake` your Youtube Assistant 👓  ")
+st.title("Hello, I'm `Creed` your Youtube Assistant 👓  ")
 
 if "messages" not in st.session_state or st.sidebar.button("Clear message history"):
     st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
