@@ -8,7 +8,5 @@ tiktoken
 chroma
 streamlit_chat
 pydub
-YoutubeAudioLoader
-OpenAIWhisperParser
 yt_dlp
 librosa
