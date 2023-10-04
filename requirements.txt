@@ -7,6 +7,8 @@ youtube-transcript-api
 tiktoken
 chroma
 streamlit_chat
-langchain yt-dlp pydub
+pydub
 YoutubeAudioLoader
 OpenAIWhisperParser
+yt_dlp
+librosa
