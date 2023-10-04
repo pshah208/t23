@@ -1,6 +1,5 @@
 import openai
 import os
-import constants
 from langchain.document_loaders import YoutubeLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings.openai import OpenAIEmbeddings
@@ -14,12 +13,17 @@ import textwrap
 import streamlit as st
 from streamlit_chat import message
 
-# Set up LLM
-os.environ["OPENAI_API_KEY"] = constants.APIKEY
-llm = ChatOpenAI(model="gpt-3.5-turbo", verbose=False)
-
+# Get an OpenAI API Key before continuing
+if "openai_api_key" in st.secrets:
+    openai_api_key = st.secrets.openai_api_key
+else:
+    openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
+if not openai_api_key:
+    st.info("Enter an OpenAI API Key to continue")
+    st.stop()
+llm = ChatOpenAI(openai_api_key=openai_api_key)
 load_dotenv(find_dotenv())
-embeddings= OpenAIEmbeddings()
+embeddings= OpenAIEmbeddings(openai_api_key=openai_api_key)
 #User input video
 video_url= st.text_input('Please enter your Youtube link here!')
 
