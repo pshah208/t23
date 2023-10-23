@@ -43,7 +43,7 @@ def creating_db(video_url):
     
     # Translate if not English
     if detected_lang != 'en':
-    transcript.page_content = translator.translate(transcript.page_content, dest='en').text
+      transcript.page_content = translator.translate(transcript.page_content, dest='en').text
     
     #to breakdown the enormous amount of tokens we will get from the transcript as we have a limited set we can input
     text_splitter= RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
