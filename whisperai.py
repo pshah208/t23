@@ -34,17 +34,16 @@ video_url= st.text_input('Please enter your Youtube link here!')
 translator = Translator()
 #creating a database
 def creating_db(video_url):
-    loader= YoutubeLoader.from_youtube_url(video_url)
     
-    # Detect language
-    detected_lang = translator.detect(transcript.page_content).lang
-    
-    # Translate if not English
-
-    if detected_lang != 'en':
-      transcript.page_content = translator.translate(transcript.page_content, dest='en').text
+   # Translate if not English
+    def translate_transcript(transcript):
+    if transcript.src != 'en':
+        return translator.translate(transcript.text, dest='en').text
+    else:
+        return transcript.text
         
-    
+    loader= YoutubeLoader.from_youtube_url(video_url, process_transcript=translate_transcript)
+      
     transcript= loader.load()
     
 
