@@ -61,6 +61,7 @@ chain= ConversationalRetrievalChain.from_llm(llm, verbose=False, retriever=retri
 
 #setting up the title
 st.title("Hello, I'm `Creed` your Youtube Assistant 👓  ")
+st.subheader("Please ask questions about the video you entered: Supported Video Languages - EN, FR, ES, PT")
 
 if "messages" not in st.session_state or st.sidebar.button("Clear message history"):
     st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
