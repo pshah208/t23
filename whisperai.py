@@ -35,20 +35,9 @@ translator = Translator()
 #creating a database
 def creating_db(video_url):
     
-    loader= YoutubeLoader.from_youtube_url(video_url, language=["en", "id"],
+    loader= YoutubeLoader.from_youtube_url(video_url, language=["en", "es", "fr"],
     translation="en")
-    transcript= loader.load() 
-    
-    # Detect language
-    detected_lang = translator.detect(transcript.page_content).lang
-
-    # Translate if not English
-    if detected_lang != 'en':
-      transcript.page_content = translator.translate(transcript.page_content, dest='en').text
-    else:
-      return transcript.text
-    
-    
+    transcript= loader.load()     
     
     #to breakdown the enormous amount of tokens we will get from the transcript as we have a limited set we can input
     text_splitter= RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
