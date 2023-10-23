@@ -45,7 +45,7 @@ def creating_db(video_url):
     if detected_lang != 'en':
       transcript.page_content = translator.translate(transcript.page_content, dest='en').text
     else:
-       retunrn transcript.text
+       return transcript.text
     
     
     
