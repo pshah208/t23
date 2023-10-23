@@ -35,7 +35,7 @@ translator = Translator()
 #creating a database
 def creating_db(video_url):
     
-    loader= YoutubeLoader.from_youtube_url(video_url, language=["en", "es", "fr"],
+    loader= YoutubeLoader.from_youtube_url(video_url, language=["en", "es", "fr", "pt-br", "pt"],
     translation="en")
     transcript= loader.load()     
     
