@@ -12,6 +12,7 @@ from langchain.memory.chat_message_histories import StreamlitChatMessageHistory
 import textwrap
 import streamlit as st
 from streamlit_chat import message
+from googletrans import Translator
 
 # Get an OpenAI API Key before continuing
 if "openai_api_key" in st.secrets:
@@ -30,13 +31,20 @@ load_dotenv(find_dotenv())
 embeddings= OpenAIEmbeddings(openai_api_key=openai_api_key)
 #User input video
 video_url= st.text_input('Please enter your Youtube link here!')
-
+translator = Translator()
 #creating a database
 def creating_db(video_url):
     
     loader= YoutubeLoader.from_youtube_url(video_url)
     transcript= loader.load()
-
+    
+    # Detect language
+    detected_lang = translator.detect(transcript.page_content).lang
+    
+    # Translate if not English
+    if detected_lang != 'en':
+    transcript.page_content = translator.translate(transcript.page_content, dest='en').text
+    
     #to breakdown the enormous amount of tokens we will get from the transcript as we have a limited set we can input
     text_splitter= RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
 
