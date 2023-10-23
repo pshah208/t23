@@ -37,9 +37,9 @@ def creating_db(video_url):
     
    # Translate if not English
     def translate_transcript(transcript):
-    if transcript.src != 'en':
+     if transcript.src != 'en':
         return translator.translate(transcript.text, dest='en').text
-    else:
+     else:
         return transcript.text
         
     loader= YoutubeLoader.from_youtube_url(video_url, process_transcript=translate_transcript)
