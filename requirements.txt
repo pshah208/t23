@@ -10,3 +10,4 @@ streamlit_chat
 pydub
 yt_dlp
 librosa
+googletrans
