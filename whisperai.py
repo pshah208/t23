@@ -17,9 +17,9 @@ from streamlit_chat import message
 if "openai_api_key" in st.secrets:
     openai_api_key = st.secrets.openai_api_key
 else:
-    openai_api_key = st.sidebar.text_input("OpenAI API Key  /n If you are not sure on how to get your OpenAI API key- /m 1) Please visit https://platform.openai.com/account/api-keys 2) Click on 'Create new key' and copy and save the key in a safe location", type="password")
+    openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
 if not openai_api_key:
-    st.info("Enter an OpenAI API Key to continue")
+    st.info("Enter an OpenAI API Key to continue /n If you are not sure on how to get your OpenAI API key- /n 1) Please visit https://platform.openai.com/account/api-keys /n 2) Click on 'Create new key' and copy and save the key in a safe location"")
     st.stop()
 llm = ChatOpenAI(openai_api_key=openai_api_key)
 load_dotenv(find_dotenv())
