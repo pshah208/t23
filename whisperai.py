@@ -19,7 +19,10 @@ if "openai_api_key" in st.secrets:
 else:
     openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
 if not openai_api_key:
-    st.info("Enter an OpenAI API Key to continue /n If you are not sure on how to get your OpenAI API key- /n 1) Please visit https://platform.openai.com/account/api-keys /n 2) Click on 'Create new key' and copy and save the key in a safe location")
+    st.info("Enter an OpenAI API Key to continue")
+    st.info("If you are not sure on how to get your OpenAI API key:")
+    st.info( " 1) Please visit https://platform.openai.com/account/api-keys")
+    st.info(" 2) Click on 'Create new key' and copy and save the key in a safe location")
     st.stop()
 llm = ChatOpenAI(openai_api_key=openai_api_key)
 load_dotenv(find_dotenv())
