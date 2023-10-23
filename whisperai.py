@@ -38,11 +38,14 @@ def creating_db(video_url):
     loader= YoutubeLoader.from_youtube_url(video_url)
     transcript= loader.load() 
     
-    if transcript.src != 'en':
-        return translator.translate(transcript.text, dest='en').text
-    else:
-        return transcript.text
+    # Detect language
+    detected_lang = translator.detect(transcript.page_content).lang
 
+    # Translate if not English
+    if detected_lang != 'en':
+      transcript.page_content = translator.translate(transcript.page_content, dest='en').text
+    else:
+       retunrn transcript.text
     
     
     
