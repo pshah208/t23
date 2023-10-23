@@ -42,7 +42,7 @@ def creating_db(video_url):
      else:
         return transcript.text
         
-    loader= YoutubeLoader.from_youtube_url(video_url, process_transcript=translate_transcript)
+    loader= YoutubeLoader.from_youtube_url(video_url)
       
     transcript= loader.load()
     
