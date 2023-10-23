@@ -36,13 +36,14 @@ translator = Translator()
 def creating_db(video_url):
     
     loader= YoutubeLoader.from_youtube_url(video_url)
-      
+    transcript= loader.load() 
+    
     if transcript.src != 'en':
         return translator.translate(transcript.text, dest='en').text
     else:
         return transcript.text
 
-    transcript= loader.load() 
+    
     
     
     #to breakdown the enormous amount of tokens we will get from the transcript as we have a limited set we can input
