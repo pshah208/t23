@@ -24,6 +24,6 @@ jobs:
 
     - name: Execute Python script
       env:
-       os.environ["OPENAI_API_KEY"]: ${{ secrets.OPENAI }}
+        API_KEY: ${{ secrets.OPENAI_API_KEY }}
        
       run: python ytubeqa.py
