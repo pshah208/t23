@@ -13,13 +13,13 @@ import textwrap
 import streamlit as st
 from streamlit_chat import message
 from googletrans import Translator
-
-# Get an OpenAI API Key before continuing
-#openai_api_key = os.environ["OPENAI_API_KEY"]
-
-llm = ChatOpenAI(openai_api_key = os.environ["OPENAI_API_KEY"])
 load_dotenv(find_dotenv())
-embeddings= OpenAIEmbeddings(openai_api_key = os.environ["OPENAI_API_KEY"])
+# Get an OpenAI API Key before continuing
+openai_api_key = os.environ["OPENAI_API_KEY"]
+
+llm = ChatOpenAI()
+
+embeddings= OpenAIEmbeddings()
 #User input video
 video_url= st.text_input('Please enter your Youtube link here!')
 translator = Translator()
