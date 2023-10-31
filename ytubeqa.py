@@ -15,17 +15,8 @@ from streamlit_chat import message
 from googletrans import Translator
 
 # Get an OpenAI API Key before continuing
-if "openai_api_key" in st.secrets:
-    openai_api_key = st.secrets.openai_api_key
-else:
-    openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
-if not openai_api_key:
-    st.title("Hello, I'm `Creed` your Youtube Assistant 👓")
-    st.info("Enter an OpenAI API Key to continue")
-    st.info("If you are not sure on how to get your OpenAI API key:")
-    st.info( " 1) Please visit https://platform.openai.com/account/api-keys")
-    st.info(" 2) Click on 'Create new key' and copy and save the key in a safe location")
-    st.stop()
+openai_api_key = os.environ["OPENAI_API_KEY"]
+
 llm = ChatOpenAI(openai_api_key=openai_api_key)
 load_dotenv(find_dotenv())
 embeddings= OpenAIEmbeddings(openai_api_key=openai_api_key)
