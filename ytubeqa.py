@@ -16,7 +16,7 @@ from googletrans import Translator
 
 #load_dotenv(find_dotenv())
 # Get an OpenAI API Key before continuing
-os.environ["OPENAI_API_KEY"] = os.environ["openai_api_key"]
+openai_api_key = os.environ["openai_api_key"]
 
 llm = ChatOpenAI()
 
