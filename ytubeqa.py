@@ -13,7 +13,7 @@ import textwrap
 import streamlit as st
 from streamlit_chat import message
 from googletrans import Translator
-
+import secrets
 load_dotenv(find_dotenv())
 # Get an OpenAI API Key before continuing
 os.environ["OPENAI_API_KEY"] = secrets.OPENAI
