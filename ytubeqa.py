@@ -13,9 +13,10 @@ import textwrap
 import streamlit as st
 from streamlit_chat import message
 from googletrans import Translator
+
 load_dotenv(find_dotenv())
 # Get an OpenAI API Key before continuing
-openai_api_key = os.environ["OPENAI_API_KEY"]
+openai_api_key = os.environ['OPENAI_API_KEY']
 
 llm = ChatOpenAI()
 
