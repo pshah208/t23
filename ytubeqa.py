@@ -17,9 +17,9 @@ from googletrans import Translator
 # Get an OpenAI API Key before continuing
 #openai_api_key = os.environ["OPENAI_API_KEY"]
 
-llm = ChatOpenAI()
+llm = ChatOpenAI(openai_api_key = os.environ["OPENAI_API_KEY"])
 load_dotenv(find_dotenv())
-embeddings= OpenAIEmbeddings()
+embeddings= OpenAIEmbeddings(openai_api_key = os.environ["OPENAI_API_KEY"])
 #User input video
 video_url= st.text_input('Please enter your Youtube link here!')
 translator = Translator()
