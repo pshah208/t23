@@ -23,7 +23,7 @@ llm = ChatOpenAI(openai_api_key=openai_api_key)
 
 embeddings= OpenAIEmbeddings(openai_api_key=openai_api_key)
 #User input video
-video_url= st.text_input('Please enter your Youtube link here!')
+video_url= st.text_input('Please enter your Youtube link here! and press Enter:/n Ignore the error below')
 translator = Translator()
 #creating a database
 def creating_db(video_url):
