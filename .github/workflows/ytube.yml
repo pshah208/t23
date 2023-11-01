@@ -25,7 +25,7 @@ jobs:
      run: |
         mkdir -p ~/.streamlit
         echo "[server]\nenableCORS = false\n\n[theme]\nprimaryColor='#F63366'\n\n
-        [secrets]\nopenai = '$OPENAI_API_KEY'" > ~/.streamlit/config.toml
+        [secrets]\nopenai_api_key = '$OPENAI_API_KEY'" > ~/.streamlit/config.toml
 
    - name: Execute Python script
      env:
