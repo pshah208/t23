@@ -48,16 +48,8 @@ db= creating_db(video_url)
 retriever= db.as_retriever(k=4, filter=None)
 msgs = StreamlitChatMessageHistory()
 memory = ConversationBufferMemory(memory_key="chat_history", chat_memory=msgs, return_messages=True)
-prompt_template = """
-Given the conversation history and question below, answer the question based on the retrieved evidence:
-Question: {user_query}
-
-Answer:
-"""
-custom_prompt = PromptTemplate.from_template(prompt_template)
-
 #chaining
-chain= ConversationalRetrievalChain.from_llm(llm, verbose=False, retriever=retriever, chain_type="stuff", memory=memory, prompt = custom_prompt)
+chain= ConversationalRetrievalChain.from_llm(llm, verbose=False, retriever=retriever, chain_type="stuff", memory=memory)
 
 #setting up the title
 st.title("Hello, I'm `Creed` your Youtube Assistant 👓  ")
