@@ -16,9 +16,9 @@ from googletrans import Translator
 
 #load_dotenv(find_dotenv())
 # Get an OpenAI API Key before continuing
-openai_api_key = os.environ["openai_api_key"]
+#openai_api_key = os.environ["openai_api_key"]
 
-llm = ChatOpenAI()
+llm = ChatOpenAI(openai_api_key=openai_api_key)
 
 embeddings= OpenAIEmbeddings()
 #User input video
