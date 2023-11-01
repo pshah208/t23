@@ -1,8 +1,9 @@
 name: Run Python script
 on:
  push:
-  branches:
-     -main
+  branches: [ main ]
+ pull_request:
+    branches: [ main ]
 
 
 jobs:
@@ -17,14 +18,16 @@ jobs:
      with:       
       python-version: 3.9  # Replace with the Python version you need
 
-   - name: Install dependencies
+
+   - name: Setup secrets
+     env:
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}  
      run: |
-        pip install -r requirements.txt  # Replace with your dependency installation command
+        echo "[server]\nenableCORS = false\n\n
+        [theme]\nprimaryColor='#F63366'\n\n
+        [secrets]\nopenai = '$OPENAI_API_KEY'" > ~/.streamlit/config.toml
 
    - name: Execute Python script
-     env:
-       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-
      run: |
         openai_api_key = os.environ["OPENAI_API_KEY"]
         python run ytubeqa.py
