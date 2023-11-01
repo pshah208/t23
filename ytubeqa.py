@@ -50,10 +50,6 @@ msgs = StreamlitChatMessageHistory()
 memory = ConversationBufferMemory(memory_key="chat_history", chat_memory=msgs, return_messages=True)
 prompt_template = """
 Given the conversation history and question below, answer the question based on the retrieved evidence:
-
-Conversation History:
-{chat_history}
-
 Question: {user_query}
 
 Answer:
