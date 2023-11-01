@@ -13,6 +13,7 @@ import textwrap
 import streamlit as st
 from streamlit_chat import message
 from googletrans import Translator
+from langchain.prompts import PromptTemplate
 
 load_dotenv(find_dotenv())
 # Get an OpenAI API Key before continuing
@@ -47,9 +48,9 @@ db= creating_db(video_url)
 retriever= db.as_retriever(k=4, filter=None)
 msgs = StreamlitChatMessageHistory()
 memory = ConversationBufferMemory(memory_key="chat_history", chat_memory=msgs, return_messages=True)
-    
+prompt = "User will ask you questions regarding the video, and you will retrieve the answers about the  questions {user_query}."
 #chaining
-chain= ConversationalRetrievalChain.from_llm(llm, verbose=False, retriever=retriever, chain_type="stuff", memory=memory) 
+chain= ConversationalRetrievalChain.from_llm(llm, verbose=False, retriever=retriever, chain_type="stuff", memory=memory, prompt=PromptTemplate.from_template(prompt)) 
 
 #setting up the title
 st.title("Hello, I'm `Creed` your Youtube Assistant 👓  ")
