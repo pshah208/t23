@@ -20,7 +20,7 @@ openai_api_key = st.secrets["API_KEY"]
 
 llm = ChatOpenAI(openai_api_key=openai_api_key)
 
-embeddings= OpenAIEmbeddings()
+embeddings= OpenAIEmbeddings(openai_api_key=openai_api_key)
 #User input video
 video_url= st.text_input('Please enter your Youtube link here!')
 translator = Translator()
