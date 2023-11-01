@@ -1,0 +1,30 @@
+name: Run Python script
+on:
+ push:
+  branches:
+     -main
+
+
+jobs:
+  build:
+   runs-on: ubuntu-latest
+   steps:
+   - name: Checkout code      
+     uses: actions/checkout@v2
+
+   - name: Set up Python   
+     uses: actions/setup-python@v2
+     with:       
+      python-version: 3.9  # Replace with the Python version you need
+
+   - name: Install dependencies
+     run: |
+        pip install -r requirements.txt  # Replace with your dependency installation command
+
+   - name: Execute Python script
+     env:
+       OPENAI_API_KEY: ${{ secrets.OPENAI }}
+
+     run: |
+        openai_api_key = os.environ["OPENAI_API_KEY"]
+        streamlit run ytubeqa.py
