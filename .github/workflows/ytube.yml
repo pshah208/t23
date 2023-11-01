@@ -29,5 +29,4 @@ jobs:
 
    - name: Execute Python script
      run: |
-        openai_api_key = os.environ["OPENAI_API_KEY"]
-        python run ytubeqa.py
+       python run ytubeqa.py
